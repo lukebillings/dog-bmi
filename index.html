@@ -11,37 +11,42 @@
     <h1>🐶 Tell us about you dog ...
     </h1>
   </div>
-  <div class="d-flex my-5 mx-auto px-3" style="max-width: 1000px;">
-          <input id="height" type="text" placeholder="Height(m)" class="form-control flex-grow-1 mx-2">
-          <input id="weight" type="text" placeholder="Weight(kg)" class="form-control flex-grow-1 mx-2">
-          <select id="selector">
-          </select>
-          <input id="btn" type="submit" value="Submit" class="btn btn-primary ms-3">
-  </div>
-  <br>
-    <div class="mx-auto shadow p-5 mb-5 bg-white rounded" id="output" style="height: 300px; width: 400px; font-size: 40px;">
-    </div>
 
-
+  <!-- input form -->
 
     <form id="search-form" class="row">
-      <div class="col-10">
-         <select id="keyword">
+      <div class="d-flex my-5 mx-auto px-3" style="max-width: 1000px;">
+        <input id="height" type="text" placeholder="Height(m)" class="form-control flex-grow-1 mx-2">
+        <input id="weight" type="text" placeholder="Weight(kg)" class="form-control flex-grow-1 mx-2">
+     <!--     <select id="keyword">
           <option value="Affenpinscher
           " >Affenpinscher</option>
           <option value="Akita
           ">Akita</option>
+          </select> -->
+          <select id="keyword">
           </select>
-      </div>
-      <div class="col-2">
-        <input type="submit" class="btn btn-primary" value="Search">
-      </div>
+        <input type="submit" class="btn btn-primary ms-3" value="Search">
+            </div>
     </form>
 
 
-<div class="container text-center">
-  <ul id="results" class="list-inline"></ul>
-</div>
+<!--
+  <div class="d-flex my-5 mx-auto px-3" style="max-width: 1000px;">
+          <input id="height" type="text" placeholder="Height(m)" class="form-control flex-grow-1 mx-2">
+          <input id="weight" type="text" placeholder="Weight(kg)" class="form-control flex-grow-1 mx-2">
+          <select id="selector">
+          </select> -->
+<!--           <input id="btn" type="submit" value="Submit" class="btn btn-primary ms-3"> -->
+  <!-- /div> -->
+  <br>
+    <div class="mx-auto shadow p-5 mb-5 bg-white rounded" id="output" style="height: 300px; width: 700px; font-size: 40px;">
+    </div>
+
+
+<!-- result info -->
+
+
 
 
 <script src="bmi_calc.js"></script>
