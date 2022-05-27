@@ -22,22 +22,23 @@ const searchForm = document.querySelector("#search-form")
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const query = document.getElementById("keyword").value;
-  console.log(query)
-  // const searchBreed = (keyword) => {
   fetch(`https://api.thedogapi.com/v1/breeds/search?q=${query}`)
     .then(response => response.json())
     .then((data) => {
       const myBreedName = data[0].name;
       const myBreedWeight = data[0].weight.metric.split(" ");
       const myBreedHeight = data[0].height.metric.split(" ");
-      const myBreedBMILow = parseInt(myBreedWeight[0]) / parseFloat(myBreedHeight[0]**2);
-      const myBreedBMIHigh = parseInt(myBreedWeight[2]) / parseFloat(myBreedHeight[2]**2);
+      const myBreedBMILow = (parseInt(myBreedWeight[0]) / (parseFloat(myBreedHeight[0]))**2).toPrecision(3);
+      const myBreedBMIHigh = (parseInt(myBreedWeight[2]) / (parseFloat(myBreedHeight[2]))**2).toPrecision(3);
+
+
       const w = parseInt(document.getElementById("weight").value);
       const h = parseFloat(document.getElementById("height").value);
       const result = document.getElementById("output");
-      const bmi = w / (h**2) ;
-      result.innerHTML = `Your Dog's Breed : ${myBreedName}. Good Range :  ${myBreedBMILow} - ${myBreedBMIHigh} your BMI is <strong> ${bmi} </strong>`;
-    });
-  // };
+      const bmi = (w / (h ** 2)).toPrecision(3) ;
+      result.innerHTML = `Breed : ${myBreedName} <br />
+      Good Range :  ${myBreedBMILow} - ${myBreedBMIHigh} <br />
+      Your BMI : <strong>${bmi}</strong>`;
+    })
 });
 
