@@ -28,17 +28,32 @@ searchForm.addEventListener("submit", (event) => {
       const myBreedName = data[0].name;
       const myBreedWeight = data[0].weight.metric.split(" ");
       const myBreedHeight = data[0].height.metric.split(" ");
-      const myBreedBMILow = (parseInt(myBreedWeight[0]) / (parseFloat(myBreedHeight[0]))**2).toPrecision(3);
-      const myBreedBMIHigh = (parseInt(myBreedWeight[2]) / (parseFloat(myBreedHeight[2]))**2).toPrecision(3);
+      const myBreedBMILow = (parseInt(myBreedWeight[0]) / ((parseFloat(myBreedHeight[0]))/100)**2).toPrecision(3);
+      const myBreedBMIHigh = (parseInt(myBreedWeight[2]) / ((parseFloat(myBreedHeight[2]))/100)**2).toPrecision(3);
+      const imgID = data[0].reference_image_id;
+      console.log(imgID)
+
+      fetch(`https://api.thedogapi.com/v1/images/${imgID}`)
+        .then(response => response.json())
+        .then((image) => {
+          const dogImgURL = image.url;
+          console.log(dogImgURL)
+          const imageResult = document.getElementById("dog-image")
+          imageResult.innerHTML = `<img src="${dogImgURL}" alt="" height="200" class="rounded">`
+        })
 
 
-      const w = parseInt(document.getElementById("weight").value);
-      const h = parseFloat(document.getElementById("height").value);
+
+      const weight = parseInt(document.getElementById("weight").value);
+      const height = parseFloat(document.getElementById("height").value);
       const result = document.getElementById("output");
-      const bmi = (w / (h ** 2)).toPrecision(3) ;
+      const bmi = (weight / (height**2)).toPrecision(3) ;
       result.innerHTML = `Breed : ${myBreedName} <br />
       Good Range :  ${myBreedBMILow} - ${myBreedBMIHigh} <br />
-      Your BMI : <strong>${bmi}</strong>`;
+      Your BMI : ${bmi}`
     })
 });
+
+
+
 
